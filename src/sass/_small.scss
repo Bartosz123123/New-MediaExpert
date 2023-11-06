@@ -1,0 +1,45 @@
+@media (min-width: 375px) {
+	.mobile {
+		.container {
+			.search-box {
+				justify-content: center;
+				margin-right: 2.5em;
+				.search {
+					max-width: 150px;
+				}
+			}
+		}
+	}
+
+	.main {
+		.sidebar {
+			.container {
+				.sidebar-menu {
+					height: 120%;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 414px) {
+	.mobile {
+		.container {
+			.search-box {
+				.search {
+					max-width: 175px;
+				}
+			}
+		}
+	}
+
+	.main {
+		.sidebar {
+			.container {
+				.sidebar-menu {
+					height: 100%;
+				}
+			}
+		}
+	}
+}

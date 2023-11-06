@@ -1,0 +1,43 @@
+@media (min-width: 1024px) {
+	.mobile {
+		padding: 2.5em 4em;
+		.container {
+			.logo {
+				a {
+					font-size: 2.4rem;
+				}
+			}
+			.search-box {
+				.search {
+					max-width: 350px;
+				}
+
+				.search-btn {
+					padding: 10px;
+					width: 36px;
+					transform: translateX(-30px);
+				}
+			}
+
+			.buy {
+				a {
+					font-size: 2.5rem;
+				}
+			}
+		}
+	}
+
+	.main {
+		// .banner {
+		// 	.banner-title {
+		// 		max-width: 500px;
+		// 	}
+		// }
+		.main-container {
+			// margin-left: 0;
+			.product-list {
+				grid-template-columns: repeat(3, 0.9fr);
+			}
+		}
+	}
+}
