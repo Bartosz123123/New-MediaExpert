@@ -540,6 +540,30 @@ html {
 					background-color 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95),
 					visibility 0.8s;
 
+				.back-arrow {
+					position: absolute;
+					right: 10px;
+					top: 10px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: 10px;
+					width: 30px;
+					height: 30px;
+					font-size: 1.6rem;
+					background-color: var(--main-color);
+					transition: background-color 0.3s, color 0.3s;
+					border-radius: 6px;
+					border: 1px solid #000;
+					cursor: pointer;
+					pointer-events: all;
+				}
+
+				.back-arrow:hover {
+					background-color: #000;
+					color: #fff;
+				}
+
 				.title {
 					margin-bottom: 10px;
 					font-size: 2rem;
@@ -623,7 +647,7 @@ html {
 	}
 
 	.price-box {
-		// display: none;
+		display: none;
 		position: fixed;
 		top: 50%;
 		left: 50%;
@@ -631,17 +655,42 @@ html {
 		width: 90%;
 		height: 90%;
 		transform: translate(-50%, -50%);
-		background-color: #f7f7f7;
+		background-color: #fff;
 		border-radius: 6px;
+		box-shadow: inset 0px 0px 40px -10px rgba(66, 68, 90, 1);
 		z-index: 200;
+		overflow: hidden;
 
 		.content {
+			position: relative;
 			display: flex;
 			justify-content: space-evenly;
 			align-items: center;
 			flex-direction: column;
 			height: 100%;
 			width: 100%;
+
+			.close {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 40px;
+				height: 40px;
+				font-size: 2rem;
+				background: none;
+				border: 1px solid var(--nav-bgc);
+				border-radius: 50px;
+				cursor: pointer;
+				transition: color 0.3s, background-color 0.3s;
+			}
+
+			.close:hover {
+				background-color: #000;
+				color: #fff;
+			}
 
 			.iphone-name-box {
 				.iphone-name {
@@ -663,6 +712,38 @@ html {
 				}
 			}
 		}
+	}
+
+	.active-price-box {
+		display: block;
+		animation: showPriceBox 0.5s;
+	}
+
+	.close-price-box {
+		animation: closePriceBox 0.5s;
+	}
+}
+
+@keyframes closePriceBox {
+	from {
+		width: 90%;
+		height: 90%;
+	}
+
+	to {
+		width: 0;
+		height: 0;
+	}
+}
+@keyframes showPriceBox {
+	from {
+		width: 0;
+		height: 0;
+	}
+
+	to {
+		width: 90%;
+		height: 90%;
 	}
 }
 
