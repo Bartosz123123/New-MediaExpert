@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const money = document.querySelector('.money');
 	const iphoneName = document.querySelector('.iphone-name');
 	const backArrow = document.querySelectorAll('.back-arrow');
+	const addToBasketBtn = document.querySelectorAll('.add-to-basket');
 
 	const arrow = sidebar.querySelector('.arrow');
 	const title = sidebar.querySelector('.title');
@@ -109,6 +110,17 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	};
 
+	basketBox.addEventListener('click', () => {
+		basketBox.classList.add('buy-box-active');
+	});
+
+	document.addEventListener('click', (e) => {
+		if (basketBox.classList.contains('buy-box-active')) {
+			if (!basketBox.contains(e.target)) {
+				basketBox.classList.remove('buy-box-active');
+			}
+		}
+	});
 	backArrow.forEach((item) => {
 		item.addEventListener('click', (e) => {
 			const backLi = e.target.closest('li');
@@ -135,6 +147,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			// product.classList.toggle('active-info-card');
 		});
 	});
+	addToBasketBtn.forEach((btn) => {
+		btn.addEventListener('click', (e) => {
+			const backLi = e.target.closest('li');
+			console.log('dodano do koszyka');
+			setTimeout(() => {
+				backLi.classList.remove('active-info-card');
+			}, 1);
+		});
+	});
+
 	slider.addEventListener('click', changeTheme);
 	activeSidebar.addEventListener('click', sidebarActive);
 	navBtn.addEventListener('click', basketOffSearch);
