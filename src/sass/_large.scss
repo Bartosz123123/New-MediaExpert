@@ -41,3 +41,13 @@
 		}
 	}
 }
+
+@media (min-width: 1200px) {
+	.main {
+		.basket-box {
+			.basket-container {
+				max-width: 900px;
+			}
+		}
+	}
+}

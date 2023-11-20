@@ -62,5 +62,34 @@
 				grid-template-columns: repeat(2, 0.9fr);
 			}
 		}
+		.basket-box {
+			.basket-container {
+				.basket-item {
+					.basket-img-box {
+						.basket-img {
+							width: 100px;
+							height: 100px;
+						}
+
+						.basket-title {
+							font-size: 2rem;
+						}
+					}
+
+					.basket-price-box {
+						.basket-input {
+							width: 35px;
+							font-size: 2rem;
+						}
+
+						
+
+						.basket-price {
+							font-size: 2rem;
+						}
+					}
+				}
+			}
+		}
 	}
 }

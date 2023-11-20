@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	const themeText = sidebar.querySelector('.theme-text');
 	const changeThemeBtn = sidebar.querySelector('.change-theme');
 
+	// const basketFunction = () => {
+		
+	// }
+
+
+
 	const closePriceBox = () => {
 		if (priceBox.classList.contains('active-price-box')) {
 			priceBox.classList.add('close-price-box');
