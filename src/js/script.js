@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const money = document.querySelector('.money');
 	const iphoneName = document.querySelector('.iphone-name');
 	const backArrow = document.querySelectorAll('.back-arrow');
-	const addToBasketBtn = document.querySelectorAll('.add-to-basket');
+	const addToBasketBtn = document.querySelectorAll('.favorite');
 
 	const arrow = sidebar.querySelector('.arrow');
 	const title = sidebar.querySelector('.title');
@@ -25,11 +25,35 @@ document.addEventListener('DOMContentLoaded', function () {
 	const themeText = sidebar.querySelector('.theme-text');
 	const changeThemeBtn = sidebar.querySelector('.change-theme');
 
-	// const basketFunction = () => {
+	const basket = document.querySelector('.basket-box');
+	const basketContainer = document.querySelector('.basket-container');
+	const addBasketBtn = document.querySelectorAll('.add-basket-btn');
+
+	const addItemToBasket = (e) => {
+		basket.style.display = 'block';
+		const closestLi = e.target.closest('li');
+		const closestImg = closestLi.querySelector('img').src;
+		const closestAlt = closestLi.querySelector('img').alt;
+		const closestPrice = closestLi.querySelector('.price').textContent;
+
+		const newLi = document.createElement('li');
+		newLi.classList.add('basket-item');
+
+		newLi.innerHTML = `
+		<div class="basket-img-box">
+			<img src="${closestImg}" alt="${closestAlt}" class="basket-img">
+			<h3 class="basket-title">Iphone 13</h3>
+		</div>
+		<div class="basket-price-box">
+			<input type="number" class="basket-input">
+			<p class="basket-price">${closestPrice}</p>
+		</div>
+		`;
+		console.log(newLi);
+
+		basketContainer.appendChild(newLi);
 		
-	// }
-
-
+	};
 
 	const closePriceBox = () => {
 		if (priceBox.classList.contains('active-price-box')) {
@@ -115,6 +139,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			themeText.style.opacity = '0';
 		}
 	};
+	//=========================================================//
+	addBasketBtn.forEach((addBtn) => {
+		addBtn.addEventListener('click', (e) => {
+			const backLi = e.target.closest('li');
+			console.log('dodano do koszyka');
+			setTimeout(() => {
+				backLi.classList.remove('active-info-card');
+			}, 1);
+
+			addItemToBasket(e);
+		});
+	});
 
 	basketBox.addEventListener('click', () => {
 		basketBox.classList.add('buy-box-active');
@@ -156,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	addToBasketBtn.forEach((btn) => {
 		btn.addEventListener('click', (e) => {
 			const backLi = e.target.closest('li');
-			console.log('dodano do koszyka');
+			console.log('dodano do ulubionych');
 			setTimeout(() => {
 				backLi.classList.remove('active-info-card');
 			}, 1);
