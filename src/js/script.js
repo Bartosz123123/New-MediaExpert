@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const showMoreBox = sidebar.querySelector('.show-more-box');
 	const products = document.querySelectorAll('.products');
 	const showMoreBtnCard = document.querySelectorAll('.show-more');
+	const shoppingCardBtn = document.querySelector('.shopping-card');
 
 	const priceBox = document.querySelector('.price-box');
 	const close = document.querySelector('.close');
@@ -29,12 +30,21 @@ document.addEventListener('DOMContentLoaded', function () {
 	const basketContainer = document.querySelector('.basket-container');
 	const addBasketBtn = document.querySelectorAll('.add-basket-btn');
 
+	const activeBuyWindow = (e) => {
+		if (basket.style.display !== 'block') {
+			setTimeout(() => {
+				basket.style.display = 'block';
+			}, 1);
+		}
+	};
+
 	const addItemToBasket = (e) => {
-		basket.style.display = 'block';
+		// basket.style.display = 'block';
 		const closestLi = e.target.closest('li');
 		const closestImg = closestLi.querySelector('img').src;
 		const closestAlt = closestLi.querySelector('img').alt;
 		const closestPrice = closestLi.querySelector('.price').textContent;
+		const closestName = closestLi.querySelector('.product-name').textContent;
 
 		const newLi = document.createElement('li');
 		newLi.classList.add('basket-item');
@@ -42,17 +52,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		newLi.innerHTML = `
 		<div class="basket-img-box">
 			<img src="${closestImg}" alt="${closestAlt}" class="basket-img">
-			<h3 class="basket-title">Iphone 13</h3>
+			<h3 class="basket-title">${closestName}</h3>
 		</div>
 		<div class="basket-price-box">
-			<input type="number" class="basket-input">
+			
 			<p class="basket-price">${closestPrice}</p>
 		</div>
 		`;
 		console.log(newLi);
 
 		basketContainer.appendChild(newLi);
-		
 	};
 
 	const closePriceBox = () => {
@@ -140,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	};
 	//=========================================================//
+	shoppingCardBtn.addEventListener('click', activeBuyWindow);
 	addBasketBtn.forEach((addBtn) => {
 		addBtn.addEventListener('click', (e) => {
 			const backLi = e.target.closest('li');
@@ -160,6 +170,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (basketBox.classList.contains('buy-box-active')) {
 			if (!basketBox.contains(e.target)) {
 				basketBox.classList.remove('buy-box-active');
+			}
+		}
+
+		if (basket.style.display === 'block') {
+			if (!basket.contains(e.target)) {
+				basket.style.display = 'none';
 			}
 		}
 	});

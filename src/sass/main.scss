@@ -130,17 +130,19 @@ html {
 				transition: width 0.3s 0.2s, height 0.3s 0.2s;
 				cursor: pointer;
 
-				a {
+				button {
 					display: inline-block;
 					padding: 0.3em;
 					font-size: 0.5rem;
 					color: var(--main-color);
+					background: none;
+					border: none;
 					transition: font-size 0.3s 0.1s;
 					z-index: 3;
 					pointer-events: none;
 				}
 
-				a:hover {
+				button:hover {
 					color: var(--hover-color);
 				}
 			}
@@ -150,9 +152,10 @@ html {
 				height: 100px;
 				cursor: auto;
 
-				a {
+				button {
 					font-size: 2rem;
 					pointer-events: all;
+					cursor: pointer;
 				}
 			}
 		}
