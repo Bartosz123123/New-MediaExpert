@@ -131,6 +131,7 @@ html {
 				cursor: pointer;
 
 				button {
+					position: relative;
 					display: inline-block;
 					padding: 0.3em;
 					font-size: 0.5rem;
@@ -140,6 +141,32 @@ html {
 					transition: font-size 0.3s 0.1s;
 					z-index: 3;
 					pointer-events: none;
+
+					.notification,
+					.fav-notification {
+						position: absolute;
+						top: -2px;
+						right: -10px;
+						width: 18px;
+						height: 18px;
+						font-size: 15px;
+						border-radius: 50px;
+						font-weight: bold;
+						color: #000;
+						background-color: var(--main-color);
+						visibility: hidden;
+					}
+					.fav-notification {
+						right: -2px;
+					}
+
+					.show-notification {
+						animation: showNotification 1s forwards;
+						visibility: visible;
+					}
+					.close-notification {
+						animation: closeNotification 1s forwards;
+					}
 				}
 
 				button:hover {
@@ -530,6 +557,9 @@ html {
 
 				.favorite {
 					left: 10px;
+					.fa-heart {
+						pointer-events: none;
+					}
 				}
 
 				.favorite:hover {
@@ -556,6 +586,11 @@ html {
 							font-weight: bold;
 						}
 					}
+				}
+
+				.added-to-favorite {
+					background-color: #000;
+					color: red;
 				}
 			}
 
@@ -760,7 +795,8 @@ html {
 		animation: closePriceBox 0.5s;
 	}
 
-	.basket-box {
+	.basket-box,
+	.favorite-box {
 		display: none;
 		position: fixed;
 		top: 50%;
@@ -774,7 +810,7 @@ html {
 		border-radius: 6px;
 		box-shadow: inset 0px 0px 40px -10px rgba(66, 68, 90, 1);
 		z-index: 200;
-		overflow: hidden;
+		overflow: scroll;
 
 		.basket-container {
 			max-width: 600px;
@@ -782,6 +818,7 @@ html {
 			transition: max-width 0.3s;
 
 			.basket-item {
+				position: relative;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
@@ -792,6 +829,26 @@ html {
 				box-shadow: 0px 0px 22px -5px rgba(66, 68, 90, 1);
 				// border-bottom: 1px solid rgb(185, 185, 185);
 				border-radius: 6px;
+
+				.close-item {
+					position: absolute;
+					top: 6px;
+					right: 6px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 30px;
+					height: 30px;
+					font-size: 16px;
+					border: 1px solid black;
+					border-radius: 50%;
+					background: none;
+					cursor: pointer;
+
+					.fa-solid {
+						pointer-events: none;
+					}
+				}
 
 				.basket-img-box {
 					display: flex;
@@ -845,6 +902,101 @@ html {
 				}
 			}
 		}
+	}
+
+	.favorite-box {
+		// display: block;
+		padding: 22px;
+
+		.fav-container {
+			display: flex;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			gap: 70px;
+			.fav-li {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				// justify-content: center;
+				align-items: center;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				max-width: 300px;
+				text-align: center;
+				// border: 1px solid var(--main-color);
+				box-shadow: 0 0 45px 0px var(--main-color);
+				border-radius: 6px;
+
+				.close-item {
+					position: absolute;
+					top: 6px;
+					right: 6px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 30px;
+					height: 30px;
+					font-size: 16px;
+					border: 1px solid black;
+					border-radius: 50%;
+					background: none;
+					cursor: pointer;
+
+					.fa-solid {
+						pointer-events: none;
+					}
+				}
+				.fav-img-box {
+					.fav-img {
+						max-width: 250px;
+						min-height: 250px;
+					}
+
+					.fav-title {
+						font-size: 1.8rem;
+					}
+				}
+
+				.fav-price-box {
+					margin-top: 10px;
+					.fav-price {
+						font-size: 1.6rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+.favorite-box::-webkit-scrollbar {
+	display: none;
+}
+
+.basket-box::-webkit-scrollbar {
+	display: none;
+}
+
+@keyframes showNotification {
+	0% {
+		transform: scale(0);
+	}
+
+	50% {
+		transform: scale(1.3);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes closeNotification {
+	from {
+		transform: scale(1);
+	}
+
+	to {
+		transform: scale(0);
 	}
 }
 
