@@ -41,5 +41,20 @@
 				}
 			}
 		}
+
+		.favorite-box {
+			.fav-container {
+				.fav-li {
+					.fav-img-box {
+						width: 250px;
+
+						.fav-img {
+							max-width: 200px;
+							min-height: 200px;
+						}
+					}
+				}
+			}
+		}
 	}
 }

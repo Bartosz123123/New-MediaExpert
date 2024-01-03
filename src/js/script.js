@@ -36,7 +36,20 @@ document.addEventListener('DOMContentLoaded', function () {
 	const favBox = document.querySelector('.favorite-box');
 	const favContainer = document.querySelector('.fav-container');
 
-	const activeBuyWindow = (e) => {
+	const searchEngine = (e) => {
+		const searchingName = document.querySelectorAll('.product-name');
+		const text = e.target.value.toLowerCase();
+
+		searchingName.forEach((el) => {
+			if (el.textContent.toLowerCase().indexOf(text) !== -1) {
+				el.closest('li').style.display = 'flex';
+			} else {
+				el.closest('li').style.display = 'none';
+			}
+		});
+	};
+
+	const activeBuyWindow = () => {
 		if (basket.style.display !== 'block') {
 			setTimeout(() => {
 				basket.style.display = 'block';
@@ -287,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	};
 	//=========================================================//
-
+	search.addEventListener('keyup', searchEngine);
 	shoppingCardBtn.addEventListener('click', activeBuyWindow);
 	addBasketBtn.forEach((addBtn) => {
 		addBtn.addEventListener('click', (e) => {

@@ -82,10 +82,23 @@
 							font-size: 2rem;
 						}
 
-						
-
 						.basket-price {
 							font-size: 2rem;
+						}
+					}
+				}
+			}
+		}
+
+		.favorite-box {
+			.fav-container {
+				.fav-li {
+					.fav-img-box {
+						width: 300px;
+
+						.fav-img {
+							max-width: 250px;
+							min-height: 250px;
 						}
 					}
 				}
